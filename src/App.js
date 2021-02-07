@@ -15,7 +15,7 @@ import Header from './components/Header';
 function App() {
   const imageDetails = {
     width: 750,
-    height: 'auto'
+    height: 450
   };
   return (
     <>
@@ -23,7 +23,8 @@ function App() {
         <Header />
         <Route
           render={({ location }) => (
-            <AnimatePresence initial={false} exitBeforeEnter>
+            //initial={false}
+            <AnimatePresence exitBeforeEnter>
               <Switch location={location} key={location.pathname}>
                 <Route
                   exact

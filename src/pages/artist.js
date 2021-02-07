@@ -1,49 +1,113 @@
 import React from 'react';
 //Components
 import Scroll from '../components/Scroll';
-//Ease
+import { motion } from 'framer-motion';
 import yayoi from '../images/yayoi.jpg';
 
-const Artist = () => {
+const transition = { duration: 1.4, ease: [0.6, 0.1, -0.5, 0.9] };
+
+const firstName = {
+  animate: {
+    y: 0,
+    transition: {
+      delayChildren: 0.6, //each letter.
+      staggerChildren: 0.04,
+      stuggerDirection: -1 // al go from right to left.
+    }
+  }
+};
+
+const lastName = {
+  animate: {
+    y: 0,
+    transition: {
+      delayChildren: 0.6,
+      staggerChildren: 0.04,
+      stuggerDirection: 1 // al go from left to right.
+    }
+  }
+};
+
+const letter = {
+  initial: {
+    y: 400
+  },
+  animate: {
+    y: 0,
+    transition: { duration: 1, ...transition }
+  }
+};
+
+const Artist = ({ imageDetails }) => {
   return (
-    <div className="single">
+    <motion.div
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      className="single"
+    >
       <div className="container fluid">
         <div className="row center top-row">
           <div className="top">
-            <div className="details">
+            <motion.div initial={{ opacity: 0 }} className="details">
               <div className="location">
                 <span>28.538336</span>
                 <span>-81.379234</span>
               </div>
-              <div className="mua">Text test</div>
-            </div>
-            <div className="model">
-              <span className="first">
-                <span>Y</span>
-                <span>a</span>
-                <span>y</span>
-                <span>o</span>
-                <span>i</span>
-              </span>
-              <span className="last">
-                <span>K</span>
-                <span>u</span>
-                <span>s</span>
-                <span>a</span>
-                <span>m</span>
-                <span>a</span>
-              </span>
-            </div>
+              <div className="museum">
+                <a href="https://yayoikusamamuseum.jp/" target="_blank">
+                  Museum
+                </a>
+              </div>
+            </motion.div>
+            <motion.div className="artist">
+              <motion.span variants={firstName} className="first">
+                <motion.span variants={letter}>Y</motion.span>
+                <motion.span variants={letter}>a</motion.span>
+                <motion.span variants={letter}>y</motion.span>
+                <motion.span variants={letter}>o</motion.span>
+                <motion.span variants={letter}>y</motion.span>
+              </motion.span>
+              <motion.span variants={lastName} className="last">
+                <motion.span variants={letter}>K</motion.span>
+                <motion.span variants={letter}>u</motion.span>
+                <motion.span variants={letter}>s</motion.span>
+                <motion.span variants={letter}>a</motion.span>
+                <motion.span variants={letter}>m</motion.span>
+                <motion.span variants={letter}>a</motion.span>
+              </motion.span>
+            </motion.div>
           </div>
         </div>
         <div className="row bottom-row">
           <div className="bottom">
             <div className="image-container-single">
-              <div className="thumbnail-single">
+              <motion.div
+                initial={{
+                  y: '-50%',
+                  width: imageDetails.width,
+                  height: imageDetails.height
+                }}
+                animate={{
+                  y: 0,
+                  width: '100%',
+                  height: window.innerWidth > 1440 ? 800 : 400,
+                  transition: { delay: 0.2, ...transition }
+                }}
+                className="thumbnail-single"
+              >
                 <div className="frame-single">
-                  <img src={yayoi} alt="an image" />
+                  <motion.img
+                    initial={{ scale: 1 }}
+                    animate={{
+                      y: window.innerWidth > 1440 ? -1200 : -600,
+                      transition: { delay: 0.2, ...transition }
+                    }}
+                    src={yayoi}
+                    alt="an image"
+                  />
                 </div>
-              </div>
+              </motion.div>
             </div>
           </div>
           <Scroll />
@@ -72,7 +136,7 @@ const Artist = () => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

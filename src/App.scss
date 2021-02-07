@@ -189,11 +189,13 @@ main {
               margin-left: 16px;
             }
           }
-          .mua {
+          .museum {
+            text-decoration: none;
+            color: $black;
             text-transform: uppercase;
           }
         }
-        .model {
+        .artist {
           overflow: hidden;
           .first {
             margin-right: 72px;
