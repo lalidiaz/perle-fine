@@ -1,7 +1,10 @@
-import * as React from 'react';
+import React from 'react';
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import ProgressiveImage from 'react-progressive-image';
 import yayoi from '../images/yayoi.jpg';
+
+const transition = { duration: 0.6, ease: [0.43, 0.13, 0.23, 0.96] };
 
 const Home = ({ imageDetails, image }) => (
   <>
@@ -18,9 +21,16 @@ const Home = ({ imageDetails, image }) => (
               }}
             >
               <div className="frame">
-                <Link to={`/artist/yayo-kusama`}>
+                <Link to={`/artist/yayoi-kusama`}>
                   <ProgressiveImage src={yayoi} placeholder={yayoi}>
-                    {(src) => <img src={src} alt="Yayoi kusama" />}
+                    {(src) => (
+                      <motion.img
+                        whileHover={{ scale: 1.1 }}
+                        transition={transition}
+                        src={src}
+                        alt="yayoi-kusama"
+                      />
+                    )}
                   </ProgressiveImage>
                 </Link>
               </div>
