@@ -35,13 +35,17 @@ const Home = ({ imageDetails, image }) => (
                 </Link>
               </div>
             </div>
-            <div className="information">
+            <motion.div
+              className="information"
+              exit={{ opacity: 0 }}
+              transition={transition}
+            >
               <div className="title">Yayoi Kusama</div>
               <div className="location">
                 <span>28.538336</span>
                 <span>-81.379234</span>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>

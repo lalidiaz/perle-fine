@@ -7,10 +7,10 @@ import './App.scss';
 
 //Pages
 import Home from './pages/home';
-import Model from './pages/artist';
+import Artist from './pages/artist';
+
 //components
 import Header from './components/Header';
-import Artist from './pages/artist';
 
 function App() {
   const imageDetails = {
@@ -21,20 +21,24 @@ function App() {
     <>
       <Router>
         <Header />
-
-        <AnimatePresence initial={false} exitBeforeEnter>
-          <Switch>
-            <Route
-              exact
-              path="/"
-              render={() => <Home imageDetails={imageDetails} />}
-            />
-            <Route
-              path="/artist/:id"
-              render={() => <Artist imageDetails={imageDetails} />}
-            />
-          </Switch>
-        </AnimatePresence>
+        <Route
+          render={({ location }) => (
+            <AnimatePresence initial={false} exitBeforeEnter>
+              <Switch location={location} key={location.pathname}>
+                <Route
+                  exact
+                  path="/"
+                  render={() => <Home imageDetails={imageDetails} />}
+                />
+                <Route
+                  exact
+                  path="/artist/:id"
+                  render={() => <Artist imageDetails={imageDetails} />}
+                />
+              </Switch>
+            </AnimatePresence>
+          )}
+        />
       </Router>
     </>
   );

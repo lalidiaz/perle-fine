@@ -1,6 +1,6 @@
 import React from 'react';
 //Components
-// import ScrollForMore from "../components/scrollForMore";
+import Scroll from '../components/Scroll';
 //Ease
 import yayoi from '../images/yayoi.jpg';
 
@@ -46,7 +46,7 @@ const Artist = () => {
               </div>
             </div>
           </div>
-          {/* <ScrollForMore /> */}
+          <Scroll />
         </div>
       </div>
       <div className="detailed-information">
