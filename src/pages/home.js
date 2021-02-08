@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import ProgressiveImage from 'react-progressive-image';
-import perle from '../images/perle4.png';
+import perle from '../images/perle2.jpeg';
 
 const transition = { duration: 0.6, ease: [0.43, 0.13, 0.23, 0.96] };
 
@@ -25,7 +25,8 @@ const Home = ({ imageDetails, image }) => (
                   <ProgressiveImage src={perle} placeholder={perle}>
                     {(src) => (
                       <motion.img
-                        whileHover={{ scale: 1.1 }}
+                        // whileTap={{ scale: 1.0 }}
+                        // whileHover={{ scale: 1.1 }}
                         transition={transition}
                         src={src}
                         alt="elaine"
@@ -40,10 +41,10 @@ const Home = ({ imageDetails, image }) => (
               exit={{ opacity: 0 }}
               transition={transition}
             >
-              <div className="title">Perle Fine</div>
               <div className="art">
-                <span>Abstract</span>
-                <span>expressionism</span>
+                <span>
+                  Abstract <span>&#8212;</span> Expressionism
+                </span>
               </div>
             </motion.div>
           </div>

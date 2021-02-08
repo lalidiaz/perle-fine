@@ -1,3 +1,5 @@
+@import './mixins';
+
 $main: #f8f8f8;
 $white: #ffffff;
 $black: #1e1f13;
@@ -66,13 +68,8 @@ body {
     max-width: 100%;
     padding: 0;
   }
-  @media (min-width: 1024px) {
-    max-width: 960px;
-  }
-  @media (min-width: 1216px) {
-    max-width: 1152px;
-  }
-  @media (min-width: 1408px) {
+
+  @mixin desktop {
     max-width: 1560px;
   }
 
@@ -84,40 +81,6 @@ body {
     }
     &.center {
       justify-content: center;
-    }
-  }
-}
-
-header {
-  font-size: 16px;
-  position: fixed;
-  z-index: 99;
-  width: 100%;
-  font-weight: '700';
-  .container {
-    .row {
-      height: 128px;
-      .logo {
-        a {
-          color: $black;
-          text-decoration: none;
-        }
-      }
-      .menu {
-        cursor: pointer;
-        border-radius: 100%;
-        border: 1px solid $black;
-        height: 80px;
-        width: 80px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: 0.3s ease-in-out;
-        &:hover {
-          color: $white;
-          background: $black;
-        }
-      }
     }
   }
 }
@@ -136,6 +99,10 @@ main {
           .frame {
             img {
               width: 100%;
+
+              @include desktop {
+                padding-top: 0px;
+              }
             }
           }
         }
@@ -144,13 +111,11 @@ main {
           width: 100%;
           display: flex;
           align-items: center;
-          justify-content: space-between;
+          justify-content: center;
           margin-top: 20px;
           text-transform: uppercase;
-          .art {
-            span:nth-child(2) {
-              margin-left: 8px;
-            }
+          @include desktop {
+            justify-content: flex-end;
           }
         }
       }
@@ -172,11 +137,7 @@ main {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          .art {
-            span:nth-child(2) {
-              margin-left: 16px;
-            }
-          }
+
           .museum {
             text-decoration: none;
             color: $black;
@@ -206,9 +167,10 @@ main {
             display: inline-block;
             position: relative;
             font-weight: 400;
-            font-size: 224px;
+            font-size: 80px;
             font-family: 'Maragsa';
-            @media (max-width: 1440px) {
+
+            @include desktop {
               font-size: 128px;
             }
           }
@@ -229,6 +191,7 @@ main {
           position: absolute;
           left: 0;
           right: 0;
+
           .frame-single {
             img {
               position: absolute;
@@ -240,8 +203,13 @@ main {
       .scroll-for-more {
         position: absolute;
         bottom: 200px;
-        left: 200px;
+        left: 45%;
         z-index: 20;
+
+        @include desktop {
+          left: 200px;
+        }
+
         .icon {
           svg {
             height: auto;
@@ -262,9 +230,20 @@ main {
   margin-top: 200px;
   height: 600px;
   .container {
+    padding-top: 100px;
+    @include desktop {
+      padding-top: 0px;
+    }
     .row {
       justify-content: space-between;
       align-items: flex-start;
+      display: flex;
+      flex-direction: column;
+      @include desktop {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+      }
       h2 {
         font-size: 28px;
       }
@@ -273,7 +252,11 @@ main {
         font-size: 16;
         line-height: 28px;
         font-weight: 400;
-        width: 800px;
+        width: auto;
+
+        @include desktop {
+          width: 800px;
+        }
       }
     }
   }

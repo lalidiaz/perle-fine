@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-
 //Framer motion
 import { AnimatePresence } from 'framer-motion';
 //Styles
@@ -9,9 +8,6 @@ import './App.scss';
 //Pages
 import Home from './pages/home';
 import Artist from './pages/artist';
-
-//components
-import Header from './components/Header';
 
 function App() {
   const imageDetails = {
@@ -22,7 +18,6 @@ function App() {
   return (
     <>
       <Router>
-        <Header />
         <Route
           render={({ location }) => (
             <AnimatePresence exitBeforeEnter initial={false}>

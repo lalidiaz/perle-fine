@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 //Components
 import Scroll from '../components/Scroll';
 import { motion, useTransform, useViewportScroll } from 'framer-motion';
-import perle from '../images/perle4.png';
+import perle from '../images/perle2.jpeg';
+import { Link } from 'react-router-dom';
+import { MdArrowBack } from 'react-icons/md';
 
 // const transition = { duration: 1.4, ease: [0.6, 0.1, -0.5, 0.9] };
 const transition = { duration: 1.4, ease: [0.6, 0.01, -0.05, 0.9] };
@@ -13,7 +15,7 @@ const firstName = {
     transition: {
       delayChildren: 0.6, //each letter.
       staggerChildren: 0.04,
-      stuggerDirection: -1 // al go from right to left.
+      staggerDirection: -1 // al go from right to left.
     }
   }
 };
@@ -24,7 +26,7 @@ const lastName = {
     transition: {
       delayChildren: 0.6,
       staggerChildren: 0.04,
-      stuggerDirection: 1 // al go from left to right.
+      staggerDirection: 1 // al go from left to right.
     }
   }
 };
@@ -40,8 +42,8 @@ const letter = {
 };
 
 const Artist = ({ imageDetails }) => {
-  const { scrollYProgress } = useViewportScroll();
   // const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]); //to make the image dissapear when scrolling
+  const { scrollYProgress } = useViewportScroll();
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
 
   const [canScroll, setCanScroll] = useState(false);
@@ -74,10 +76,12 @@ const Artist = ({ imageDetails }) => {
               }}
               className="details"
             >
-              <div className="art">
-                <span>Abstract</span>
-                <span>expressionism</span>
+              <div className="arrow">
+                <Link to="/">
+                  <MdArrowBack color="black" size={60} />
+                </Link>
               </div>
+
               <div className="museum">
                 <a
                   className="a"
@@ -150,7 +154,7 @@ const Artist = ({ imageDetails }) => {
                     style={{ scale: scale }}
                     initial={{ scale: 1.0 }}
                     animate={{
-                      y: window.innerWidth > 1440 ? -1200 : -600,
+                      y: window.innerWidth > 1440 ? -1200 : 0,
                       transition: { delay: 0.2, ...transition }
                     }}
                     src={perle}
