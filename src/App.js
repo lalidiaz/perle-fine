@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
+
 //Framer motion
 import { AnimatePresence } from 'framer-motion';
 //Styles
@@ -17,14 +18,14 @@ function App() {
     width: 750,
     height: 450
   };
+
   return (
     <>
       <Router>
         <Header />
         <Route
           render={({ location }) => (
-            //initial={false}
-            <AnimatePresence exitBeforeEnter>
+            <AnimatePresence exitBeforeEnter initial={false}>
               <Switch location={location} key={location.pathname}>
                 <Route
                   exact

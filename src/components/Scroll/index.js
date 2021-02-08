@@ -1,8 +1,15 @@
 import React from 'react';
+import { motion } from 'framer-motion';
+
+const transition = { duration: 0.6, ease: [0.43, 0.13, 0.23, 0.96] };
 
 const Scroll = () => {
   return (
-    <div className="scroll-for-more">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      aniamte={{ opacity: 1, y: 0, transition: { delay: 1.2, ...transition } }}
+      className="scroll-for-more"
+    >
       <div className="icon">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -29,7 +36,7 @@ const Scroll = () => {
         Scroll <br />
         for more
       </div>
-    </div>
+    </motion.div>
   );
 };
 
